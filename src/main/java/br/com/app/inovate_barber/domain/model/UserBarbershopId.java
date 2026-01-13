@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 
 @Embeddable
@@ -17,4 +18,16 @@ import java.util.UUID;
 public class UserBarbershopId implements Serializable {
     private UUID userId;
     private UUID barbershopId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserBarbershopId that)) return false;
+        return Objects.equals(userId, that.userId) &&
+                Objects.equals(barbershopId, that.barbershopId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, barbershopId);
+    }
 }

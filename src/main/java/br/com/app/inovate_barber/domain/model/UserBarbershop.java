@@ -1,6 +1,7 @@
 package br.com.app.inovate_barber.domain.model;
 
 import br.com.app.inovate_barber.domain.enums.Role;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "user_barbershop")
+@Schema(hidden = true)
 public class UserBarbershop {
     @EmbeddedId
     private UserBarbershopId id;

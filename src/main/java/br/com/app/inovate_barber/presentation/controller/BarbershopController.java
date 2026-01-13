@@ -27,7 +27,7 @@ public class BarbershopController {
 	}
 
 	@GetMapping("list")
-	public CompletableFuture<ResponseEntity<List<BarbershopResponseDto>>> getAll(){
+	public CompletableFuture<ResponseEntity<?>> getAll(){
 		return barbershopService.getAll()
 				.thenApply(ResponseEntity::ok);
 	}

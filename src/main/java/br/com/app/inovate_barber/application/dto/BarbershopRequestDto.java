@@ -13,11 +13,8 @@ import jakarta.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BarbershopRequestDto {
-    @NotBlank
     private String fantasyName;
-    @NotBlank
     private String address;
-    @CNPJ
-    @NotBlank
     private String cnpj;
+    private String uf;
 }

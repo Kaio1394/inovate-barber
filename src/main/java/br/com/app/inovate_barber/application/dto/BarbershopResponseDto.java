@@ -16,17 +16,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BarbershopResponseDto {
-    @NotBlank
     private UUID id;
-    @NotBlank
     private String fantasyName;
-    @NotBlank
     private String address;
-    @CNPJ
-    @NotBlank
     private String cnpj;
-    @NotBlank
+    private String uf;
     private LocalDateTime createdAt;
-    @NotBlank
     private LocalDateTime updatedAt;
 }

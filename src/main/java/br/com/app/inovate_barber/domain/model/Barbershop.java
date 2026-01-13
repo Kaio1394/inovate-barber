@@ -3,6 +3,7 @@ package br.com.app.inovate_barber.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -41,6 +42,7 @@ public class Barbershop extends BaseModel {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JsonIgnore
     private List<UserBarbershop> users = new ArrayList<>();
 
 }
