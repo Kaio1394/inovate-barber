@@ -3,13 +3,9 @@ package br.com.app.inovate_barber.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
 import org.hibernate.validator.constraints.br.CNPJ;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,11 +27,20 @@ public class Barbershop extends BaseModel {
     @Column(name = "address")
     private String address;
 
+    @NotBlank
+    @Column(name = "uf")
+    private String uf;
+
     @CNPJ
     @NotBlank
     @Column(name = "cnpj", unique = true)
     private String cnpj;
 
-    @OneToMany(mappedBy = "barbershop", cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
-    private List<Barber> barbers = new ArrayList<>();
+    @OneToMany(
+            mappedBy = "barbershop",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<UserBarbershop> users = new ArrayList<>();
+
 }

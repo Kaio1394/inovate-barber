@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-public interface BaseService<Model, RequestDto, ResponseDto> {
+public interface BaseService<RequestDto, ResponseDto> {
     CompletableFuture<List<ResponseDto>> getAll();
 
     CompletableFuture<ResponseDto> getResultById(UUID id);

@@ -6,6 +6,6 @@ import br.com.app.inovate_barber.application.dto.*;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public interface BarbershopService extends BaseService<Barbershop, BarbershopRequestDto, BarbershopResponseDto> {
+public interface BarbershopService extends BaseService<BarbershopRequestDto, BarbershopResponseDto> {
     CompletableFuture<BarbershopResponseDto> findByCnpj(String cnpj);
 }

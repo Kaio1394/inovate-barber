@@ -21,11 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Slf4j
 public class BarbershopServiceImpl implements BarbershopService {
-	@Autowired
-	private ModelMapper mapper;
+	private final ModelMapper mapper;
+	private final BarberShopRepository repository;
 
-	@Autowired
-	private BarberShopRepository repository;
+	public BarbershopServiceImpl(ModelMapper mapper, BarberShopRepository repository) {
+		this.mapper = mapper;
+		this.repository = repository;
+	}
 
 	@Override
 	public CompletableFuture<List<BarbershopResponseDto>> getAll() {
