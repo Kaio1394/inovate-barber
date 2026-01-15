@@ -6,7 +6,7 @@ INSERT INTO users (
     phone,
     active
 ) VALUES (
-     RANDOM_UUID(),
+     gen_random_uuid(),
      'ADM_SUPPORT',
      'adm-support@inovate-barber.com',
      'adm',
@@ -22,7 +22,7 @@ INSERT INTO users (
     phone,
     active
 ) VALUES (
-     RANDOM_UUID(),
+     gen_random_uuid(),
      'ADM_SUPPORT_1',
      'adm-support-1@inovate-barber.com',
      'adm',

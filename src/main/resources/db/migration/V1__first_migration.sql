@@ -6,7 +6,8 @@ CREATE TABLE users (
    phone VARCHAR(255) NOT NULL,
    active BOOLEAN NOT NULL DEFAULT TRUE,
    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   updated_at TIMESTAMP
+   updated_at TIMESTAMP,
+   constraint uk_user_email UNIQUE(email)
 );
 
 CREATE TABLE barbershops (

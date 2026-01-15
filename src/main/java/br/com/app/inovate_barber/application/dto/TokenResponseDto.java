@@ -1,6 +1,5 @@
 package br.com.app.inovate_barber.application.dto;
 
-import br.com.app.inovate_barber.domain.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,9 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequestDto {
-    private String name;
-    private String email;
-    private String password;
-    private boolean active;
+public class TokenResponseDto {
+    private String accessToken;
 }

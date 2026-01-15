@@ -5,6 +5,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -47,6 +48,17 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse(
                         ex.getClass().getSimpleName(),
                         messageSource.getMessage("exception.entity.already.exists", null, LocaleContextHolder.getLocale()),
+                        LocalDateTime.now()
+                ));
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleEntityAlreadyExists(BadCredentialsException ex) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(new ErrorResponse(
+                        ex.getClass().getSimpleName(),
+                        messageSource.getMessage("exception.bad.credentials", null, LocaleContextHolder.getLocale()),
                         LocalDateTime.now()
                 ));
     }
