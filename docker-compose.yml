@@ -12,6 +12,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: postgres
       SPRING_JPA_HIBERNATE_DDL_AUTO: none
       SPRING_FLYWAY_ENABLED: "true"
+      SECURITY.JWT.SECRET: 2853570d-1f5b-4b34-9670-fe5b1ff0b29b
+      SECURITY.JWT.EXPIRATION: 86400000
 
   postgres:
     image: postgres:16

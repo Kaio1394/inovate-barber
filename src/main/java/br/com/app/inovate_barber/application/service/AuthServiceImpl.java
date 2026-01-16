@@ -1,9 +1,6 @@
 package br.com.app.inovate_barber.application.service;
 
-import br.com.app.inovate_barber.application.dto.LoginRequestDto;
-import br.com.app.inovate_barber.application.dto.RegisterRequestDto;
-import br.com.app.inovate_barber.application.dto.TokenResponseDto;
-import br.com.app.inovate_barber.application.dto.UserResponseDto;
+import br.com.app.inovate_barber.application.dto.*;
 import br.com.app.inovate_barber.application.interfaces.AuthService;
 import br.com.app.inovate_barber.application.interfaces.JwtService;
 import br.com.app.inovate_barber.domain.exception.EntityAlreadyExistsException;
@@ -39,12 +36,12 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException("");
         }
         var token = jwtService.generate(user);
-        return new TokenResponseDto(token);
+        return new TokenResponseDto(token, jwtService.getExpiration());
     }
 
     @Transactional
     @Override
-    public void register(RegisterRequestDto requestDto) {
+    public RegisterResponseDto register(RegisterRequestDto requestDto) {
         userRepository.findByEmail(requestDto.getEmail())
                 .ifPresent(b -> {
                     throw new EntityAlreadyExistsException();
@@ -53,6 +50,7 @@ public class AuthServiceImpl implements AuthService {
         User userModel = mapper.map(requestDto, User.class);
         var pass = userModel.getPassword();
         userModel.setPassword(encoder.encode(pass));
-        userRepository.save(userModel);
+        userModel = userRepository.save(userModel);
+        return mapper.map(userModel, RegisterResponseDto.class);
     }
 }

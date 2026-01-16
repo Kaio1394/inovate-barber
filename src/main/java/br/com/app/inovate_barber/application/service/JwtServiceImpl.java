@@ -4,6 +4,7 @@ import br.com.app.inovate_barber.application.interfaces.JwtService;
 import br.com.app.inovate_barber.domain.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class JwtServiceImpl implements JwtService {
     @Value("${security.jwt.secret}")
     private String secret;
 
+    @Getter
     @Value("${security.jwt.expiration}")
     private long expiration;
 

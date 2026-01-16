@@ -5,11 +5,11 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public interface BaseService<RequestDto, ResponseDto> {
-    CompletableFuture<List<ResponseDto>> getAll();
+    List<ResponseDto> getAll();
 
-    CompletableFuture<ResponseDto> getResultById(UUID id);
+    ResponseDto getResultById(UUID id);
 
     ResponseDto add(RequestDto request);
 
-    CompletableFuture<ResponseDto> deleteById(UUID id);
+    ResponseDto deleteById(UUID id);
 }

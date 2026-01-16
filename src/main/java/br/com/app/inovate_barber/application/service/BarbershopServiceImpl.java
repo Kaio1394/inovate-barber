@@ -2,7 +2,6 @@ package br.com.app.inovate_barber.application.service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 import br.com.app.inovate_barber.domain.exception.EntityAlreadyExistsException;
 import br.com.app.inovate_barber.domain.exception.EntityNotFoundException;
@@ -30,21 +29,17 @@ public class BarbershopServiceImpl implements BarbershopService {
 	}
 
 	@Override
-	public CompletableFuture<List<BarbershopResponseDto>> getAll() {
-		return CompletableFuture.supplyAsync(() -> {
-			List<Barbershop> listModel = repository.findAll();
-			return listModel.stream()
-					.map(item -> mapper.map(item, BarbershopResponseDto.class))
-					.toList();
-		});
+	public List<BarbershopResponseDto> getAll() {
+		List<Barbershop> listModel = repository.findAll();
+		return listModel.stream()
+				.map(item -> mapper.map(item, BarbershopResponseDto.class))
+				.toList();
 	}
 
 	@Override
-	public CompletableFuture<BarbershopResponseDto> getResultById(UUID id) {
-		return CompletableFuture.supplyAsync(() -> {
-			var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-			return mapper.map(model, BarbershopResponseDto.class);
-		});
+	public BarbershopResponseDto getResultById(UUID id) {
+		var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+		return mapper.map(model, BarbershopResponseDto.class);
 	}
 
 	@Transactional
@@ -60,19 +55,16 @@ public class BarbershopServiceImpl implements BarbershopService {
 	}
 
 	@Override
-	public CompletableFuture<BarbershopResponseDto> deleteById(UUID id) {
-		return CompletableFuture.supplyAsync(() -> {
-			var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-			repository.delete(model);
-			return mapper.map(model, BarbershopResponseDto.class);
-		});
+	public BarbershopResponseDto deleteById(UUID id) {
+		var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+		repository.delete(model);
+		return mapper.map(model, BarbershopResponseDto.class);
 	}
 
+
 	@Override
-	public CompletableFuture<BarbershopResponseDto> findByCnpj(String cnpj) {
-		return CompletableFuture.supplyAsync(() -> {
-			var model = repository.findByCnpj(cnpj).orElseThrow(EntityNotFoundException::new);
-			return mapper.map(model, BarbershopResponseDto.class);
-		});
+	public BarbershopResponseDto findByCnpj(String cnpj) {
+		var model = repository.findByCnpj(cnpj).orElseThrow(EntityNotFoundException::new);
+		return mapper.map(model, BarbershopResponseDto.class);
 	}
 }

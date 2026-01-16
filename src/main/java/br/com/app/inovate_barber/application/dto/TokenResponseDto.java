@@ -11,4 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TokenResponseDto {
     private String accessToken;
+    private long expiredAt;
 }

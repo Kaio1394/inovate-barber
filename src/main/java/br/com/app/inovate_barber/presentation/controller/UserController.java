@@ -1,6 +1,5 @@
 package br.com.app.inovate_barber.presentation.controller;
 
-import br.com.app.inovate_barber.application.dto.UserRequestDto;
 import br.com.app.inovate_barber.application.interfaces.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,15 +19,8 @@ public class UserController {
     }
 
     @GetMapping("list")
-    public CompletableFuture<ResponseEntity<?>> getAllUser(){
-        return userService.getAll()
-                .thenApply(ResponseEntity::ok);
+    public ResponseEntity<?> getAllUser(){
+        var listUsers = userService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(listUsers);
     }
-
-    @PostMapping
-    public ResponseEntity<?> add(@RequestBody UserRequestDto userDto){
-        var userResponseDto = userService.add(userDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDto);
-    }
-
 }

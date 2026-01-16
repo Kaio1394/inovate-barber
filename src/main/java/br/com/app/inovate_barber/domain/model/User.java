@@ -31,8 +31,7 @@ public class User extends BaseModel {
     @Column(nullable = false)
     private String phone;
 
-    @Column(nullable = false)
-    private boolean active;
+    private boolean active = true;
 
     @OneToMany(
             mappedBy = "user",

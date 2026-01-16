@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public interface BarbershopService extends BaseService<BarbershopRequestDto, BarbershopResponseDto> {
-    CompletableFuture<BarbershopResponseDto> findByCnpj(String cnpj);
+    BarbershopResponseDto findByCnpj(String cnpj);
 }

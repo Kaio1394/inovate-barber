@@ -25,30 +25,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public CompletableFuture<List<UserResponseDto>> getAll() {
-        return CompletableFuture.supplyAsync(() -> {
-            var listModel = repository.findAll();
-            return listModel.stream()
-                    .map(x -> mapper.map(x, UserResponseDto.class))
-                    .toList();
-        });
+    public List<UserResponseDto> getAll() {
+        var listModel = repository.findAll();
+        return listModel.stream()
+                .map(x -> mapper.map(x, UserResponseDto.class))
+                .toList();
     }
 
     @Override
-    public CompletableFuture<UserResponseDto> getResultById(UUID id) {
-        return CompletableFuture.supplyAsync(() -> {
-            var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-            return mapper.map(model, UserResponseDto.class);
-        });
+    public UserResponseDto getResultById(UUID id) {
+        var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return mapper.map(model, UserResponseDto.class);
     }
 
     @Override
-    public CompletableFuture<UserResponseDto> deleteById(UUID id) {
+    public UserResponseDto deleteById(UUID id) {
         return null;
     }
 
     @Override
-    public CompletableFuture<UserResponseDto> findByEmail(String email) {
+    public UserResponseDto findByEmail(String email) {
         return null;
     }
 }

@@ -7,4 +7,5 @@ import java.util.UUID;
 public interface JwtService {
     String generate(User user);
     boolean isValid(String token);
+    long getExpiration();
 }
