@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/auth")
 public class AuthController {
-    private final UserService userService;
-    private final AuthService authService;
-
-    public AuthController(UserService userService, AuthService authService) {
-        this.userService = userService;
-        this.authService = authService;
-    }
-
-    @PostMapping("register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequestDto requestDto){
-        var resp = authService.register(requestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
-    }
-
-    @PostMapping
-    public ResponseEntity<?> login(@RequestBody LoginRequestDto requestDto){
-        var resp = authService.login(requestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
-    }
+//    private final UserService userService;
+//    private final AuthService authService;
+//
+//    public AuthController(UserService userService, AuthService authService) {
+//        this.userService = userService;
+//        this.authService = authService;
+//    }
+//
+//    @PostMapping("register")
+//    public ResponseEntity<?> register(@RequestBody RegisterRequestDto requestDto){
+//        var resp = authService.register(requestDto);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<?> login(@RequestBody LoginRequestDto requestDto){
+//        var resp = authService.login(requestDto);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+//    }
 }

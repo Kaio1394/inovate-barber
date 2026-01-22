@@ -10,5 +10,4 @@ import java.util.concurrent.CompletableFuture;
 public interface AuthService {
     TokenResponseDto login(LoginRequestDto requestDto);
     RegisterResponseDto register(RegisterRequestDto requestDto);
-
 }

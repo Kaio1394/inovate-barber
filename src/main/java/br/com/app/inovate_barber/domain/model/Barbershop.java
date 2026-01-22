@@ -1,17 +1,13 @@
 package br.com.app.inovate_barber.domain.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.validator.constraints.br.CNPJ;
-
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Getter
 @Setter
@@ -36,13 +32,4 @@ public class Barbershop extends BaseModel {
     @NotBlank
     @Column(name = "cnpj", unique = true)
     private String cnpj;
-
-    @OneToMany(
-            mappedBy = "barbershop",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    @JsonIgnore
-    private List<UserBarbershop> users = new ArrayList<>();
-
 }

@@ -17,6 +17,7 @@ public class UserResponseDto {
     private UUID id;
     private String name;
     private String email;
+    private String firebaseId;
     private boolean active;
     private LocalDateTime createdAt;
 }
