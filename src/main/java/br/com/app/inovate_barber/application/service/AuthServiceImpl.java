@@ -4,7 +4,7 @@
 //import br.com.app.inovate_barber.application.interfaces.AuthService;
 //import br.com.app.inovate_barber.application.interfaces.JwtService;
 //import br.com.app.inovate_barber.domain.exception.EntityAlreadyExistsException;
-//import br.com.app.inovate_barber.domain.model.User;
+//import br.com.app.inovate_barber.domain.model.barbershop.User;
 //import br.com.app.inovate_barber.infrastructure.repository.UserRepository;
 //import org.modelmapper.ModelMapper;
 //import org.springframework.security.authentication.BadCredentialsException;
