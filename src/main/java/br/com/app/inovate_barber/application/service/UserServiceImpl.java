@@ -2,17 +2,13 @@ package br.com.app.inovate_barber.application.service;
 
 import br.com.app.inovate_barber.application.dto.UserResponseDto;
 import br.com.app.inovate_barber.application.interfaces.UserService;
-import br.com.app.inovate_barber.domain.exception.EntityAlreadyExistsException;
 import br.com.app.inovate_barber.domain.exception.EntityNotFoundException;
-import br.com.app.inovate_barber.domain.model.User;
 import br.com.app.inovate_barber.infrastructure.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 public class UserServiceImpl implements UserService {

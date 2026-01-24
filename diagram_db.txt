@@ -1,0 +1,74 @@
+Table user {
+  id UUID [pk]
+  firebase_id VARCHAR(255)
+  active boolean
+  created_at date
+  updated_at date
+}
+Table barbershops{
+  id UUID [pk]
+  fantasy_name VARCHAR(255)
+  address VARCHAR(255)
+  uf VARCHAR(2)
+  cnpj VARCHAR(14)
+  created_at date
+  updated_at date
+}
+
+Table user_barbershop {
+ user_id UUID
+ barbershop_id UUID
+ role VARCHAR(20)
+}
+
+Table customers{
+   id UUID [pk]
+    full_name VARCHAR(255)
+    email VARCHAR(255)
+    cpf VARCHAR(14)
+    phone VARCHAR(20)
+    created_at date
+    updated_at date
+}
+
+Table barbershop_customer {
+  barbershop_id UUID
+    customer_id UUID
+}
+
+Table order_service{
+  id UUID [pk]
+  user_id UUID
+  barbershop_id UUID
+  status VARCHAR(10)
+  total_amount decimal
+  created_at date
+}
+
+Table finance_history{
+  id UUID [pk]
+  order_service_id UUID
+  barbershop_id UUID
+  customer_id UUID
+type VARCHAR(20)
+}
+
+Table appoitments{
+  id UUID [pk]
+  barbershop_id UUID
+  user_id UUID
+  scheduled_at TIMESTAMP
+  status VARCHAR(10)
+}
+
+ref: user_barbershop.user_id > user.id
+ref: user_barbershop.barbershop_id> barbershops.id
+ref: barbershop_customer.customer_id > customers.id
+ref: barbershop_customer.barbershop_id > barbershops.id
+ref: finance_history.order_service_id > order_service.id
+ref: finance_history.barbershop_id > barbershops.id
+ref: finance_history.customer_id  > customers.id
+
+ref: order_service.barbershop_id > barbershops.id
+ref: appoitments.barbershop_id > barbershops.id
+ref: appoitments.user_id > user.id

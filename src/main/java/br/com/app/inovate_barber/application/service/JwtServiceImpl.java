@@ -1,7 +1,7 @@
 //package br.com.app.inovate_barber.application.service;
 //
 //import br.com.app.inovate_barber.application.interfaces.JwtService;
-//import br.com.app.inovate_barber.domain.model.User;
+//import br.com.app.inovate_barber.domain.model.barbershop.User;
 //import io.jsonwebtoken.Jwts;
 //import io.jsonwebtoken.security.Keys;
 //import lombok.Getter;

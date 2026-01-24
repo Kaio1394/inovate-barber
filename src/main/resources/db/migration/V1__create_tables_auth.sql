@@ -31,15 +31,35 @@ CREATE TABLE customers(
     CONSTRAINT uk_customer_cpf UNIQUE(cpf)
 );
 
-CREATE TABLE user_barbershop(
-    user_id UUID NOT NULL,
-    barbershop_id UUID NOT NULL,
-    role VARCHAR(50) NOT NULL
+
+CREATE TABLE products(
+    id UUID PRIMARY KEY,
+    description VARCHAR(255),
+    price DOUBLE NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+);
+
+
+CREATE TABLE user_barbershop (
+     user_id UUID NOT NULL,
+     barbershop_id UUID NOT NULL,
+     role VARCHAR(50) NOT NULL,
+     PRIMARY KEY (user_id, barbershop_id),
+     CONSTRAINT fk_user_barbershop_user
+         FOREIGN KEY (user_id) REFERENCES users(id),
+     CONSTRAINT fk_user_barbershop_barbershop
+         FOREIGN KEY (barbershop_id) REFERENCES barbershops(id)
 );
 
 CREATE TABLE barbershop_customer(
     barbershop_id UUID NOT NULL,
     customer_id UUID NULL,
+    PRIMARY KEY (barbershop_id, customer_id),
+    CONSTRAINT fk_barbershop_customer_barbershop
+        FOREIGN KEY (barbershop_id) REFERENCES barbershops(id),
+    CONSTRAINT fk_barbershop_customer_customer
+        FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
 
@@ -60,13 +80,3 @@ CREATE TABLE barbershop_customer(
 --             REFERENCES barbershops (id)
 -- );
 
--- CREATE TABLE user_barbershop (
---      user_id UUID NOT NULL,
---      barbershop_id UUID NOT NULL,
---      role VARCHAR(50) NOT NULL,
---      PRIMARY KEY (user_id, barbershop_id),
---      CONSTRAINT fk_user_barbershop_user
---          FOREIGN KEY (user_id) REFERENCES users(id),
---      CONSTRAINT fk_user_barbershop_barbershop
---          FOREIGN KEY (barbershop_id) REFERENCES barbershops(id)
--- );
