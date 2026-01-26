@@ -1,8 +1,10 @@
 package br.com.app.inovate_barber.application.service;
 
+import br.com.app.inovate_barber.application.dto.UserRequestDto;
 import br.com.app.inovate_barber.application.dto.UserResponseDto;
 import br.com.app.inovate_barber.application.interfaces.UserService;
 import br.com.app.inovate_barber.domain.exception.EntityNotFoundException;
+import br.com.app.inovate_barber.domain.model.entity.User;
 import br.com.app.inovate_barber.infrastructure.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -21,26 +23,37 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponseDto> getAll() {
-        var listModel = repository.findAll();
-        return listModel.stream()
-                .map(x -> mapper.map(x, UserResponseDto.class))
-                .toList();
+    public List<UserRequestDto> findAll() {
+        return List.of();
     }
 
     @Override
-    public UserResponseDto getResultById(UUID id) {
-        var model = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-        return mapper.map(model, UserResponseDto.class);
+    public UserRequestDto findById(UUID id) {
+        return null;
     }
 
     @Override
-    public UserResponseDto deleteById(UUID id) {
+    public UserRequestDto add(UserResponseDto request) {
+        return null;
+    }
+
+    @Override
+    public UserRequestDto update(UserResponseDto request, UUID id) {
+        return null;
+    }
+
+    @Override
+    public UserRequestDto deleteById(UUID id) {
         return null;
     }
 
     @Override
     public UserResponseDto findByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public UserResponseDto findByFirebaseId(String firebaseId) {
         return null;
     }
 }
