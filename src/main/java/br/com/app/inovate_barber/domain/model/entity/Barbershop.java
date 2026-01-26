@@ -41,4 +41,7 @@ public class Barbershop extends BaseModel {
 
     @OneToMany(mappedBy = "barbershop", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "barbershop", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products;
 }

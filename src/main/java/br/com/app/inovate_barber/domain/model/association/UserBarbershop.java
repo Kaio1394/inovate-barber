@@ -26,7 +26,7 @@ public class UserBarbershop {
     private User user;
 
     @ManyToOne
-    @MapsId("barbershop")
+    @MapsId("barbershopId")
     @JoinColumn(name = "barbershop_id")
     private Barbershop barbershop;
 }
